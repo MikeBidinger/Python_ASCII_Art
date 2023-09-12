@@ -15,6 +15,7 @@ CHAR_W = 10
 CHAR_H = 18
 TXT_OUT = "output.txt"
 IMG_OUT = "output.png"
+FACTOR = 1
 
 
 def file_selection_dialog():
@@ -46,7 +47,8 @@ def get_image(file_path):
 def resize_image(image):
     # Resize image to maintain aspect-ratio (character-dimension dependent)
     return image.resize(
-        (int(image.width / CHAR_W), int(image.height / CHAR_H)), Image.NEAREST
+        (int((image.width / CHAR_W) * FACTOR), int((image.height / CHAR_H) * FACTOR)),
+        Image.NEAREST,
     )
 
 
